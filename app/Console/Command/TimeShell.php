@@ -15,7 +15,7 @@ class Timeshell extends AppShell {
        // $time = gmdate((int) $html);
         $this->out($time);
        
-        $sql = "INSERT INTO  time_shell (time) VALUES ($time)";
+        $sql = "INSERT INTO  cake_time (time) VALUES ($time)";
          mysql_query($sql);
 
     } 
