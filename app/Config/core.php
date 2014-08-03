@@ -222,12 +222,12 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'cakephpexam');
+	Configure::write('Security.salt', 'buiquocviet');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
  */
-	Configure::write('Security.cipherSeed', '0123456789');
+	Configure::write('Security.cipherSeed', '12121241241241');
 
 /**
  * Apply timestamps with the last modified time to static assets (js, css, images).

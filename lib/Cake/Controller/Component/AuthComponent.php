@@ -816,6 +816,7 @@ class AuthComponent extends Component {
  * @deprecated Since 2.5. Use AuthComponent::user() directly.
  */
 	public function loggedIn() {
+            
 		return (bool)$this->user();
 	}
 

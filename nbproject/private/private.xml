@@ -3,24 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/wamp/www/cakephp/app/Controller/Postscontroller.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Books/index.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Posts/view.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Users/add.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/Controller/PagesController.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/Model/valid.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/Controller/BooksController.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Posts/add.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Posts/edit.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/Controller/ValidsController.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Users/login.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Books/view.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/Model/Post.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/valids/index.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Users/index.ctp</file>
-            <file>file:/C:/wamp/www/cakephp/app/Controller/UsersController.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/Model/User.php</file>
-            <file>file:/C:/wamp/www/cakephp/app/View/Posts/index.ctp</file>
+            <file>file:/C:/wamp/www/blog/app/Controller/AppController.php</file>
         </group>
     </open-files>
 </project-private>
