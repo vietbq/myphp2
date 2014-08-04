@@ -19,7 +19,7 @@
                         <ul class="nav nav-pills nav-stacked">
 
                             <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Users'), array('action' => 'index'), array('escape' => false)); ?></li>
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Login'), array('action' => 'login'), array('escape' => false)); ?></li>
+                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;Login'), array('action' => 'login'), array('escape' => false)); ?></li>
                         </ul>
                     </div>
                 </div>

@@ -18,10 +18,13 @@
                     <div class="panel-heading">Actions</div>
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;List Posts'), array('controller'=>'posts','action' => 'index'), array('escape' => false)); ?></li>
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New User'), array('action' => 'add'), array('escape' => false)); ?></li>
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Login'), array('action' => 'login'), array('escape' => false)); ?></li>
-                            
+                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Posts'), array('controller'=>'posts','action' => 'index'), array('escape' => false)); ?></li>
+                            <?php if(!$logged_in){ ?>
+                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New User'), array('action' => 'add'), array('escape' => false)); ?></li>
+                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;Login'), array('action' => 'login'), array('escape' => false)); ?></li>
+                            <?php } else { ?>
+                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;User\'s Profile'), array('controller'=>'users','action' => 'view',$current_user['id']), array('escape' => false)); ?></li> 
+                            <?php } ?>
                         </ul>
                     </div><!-- end body -->
                 </div><!-- end panel -->
@@ -34,7 +37,7 @@
                     <tr>
                         <th><?php echo $this->Paginator->sort('id'); ?></th>
                         <th><?php echo $this->Paginator->sort('username'); ?></th>
-                      
+
                         <th><?php echo $this->Paginator->sort('email'); ?></th>
                         <th><?php echo $this->Paginator->sort('role'); ?></th>
                         <th><?php echo $this->Paginator->sort('created'); ?></th>
@@ -53,8 +56,11 @@
                         <td><?php echo h($user['User']['modified']); ?>&nbsp;</td>
                         <td class="actions">
 							<?php echo $this->Html->link('<span class="glyphicon glyphicon-search"></span>', array('action' => 'view', $user['User']['id']), array('escape' => false)); ?>
-							<?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $user['User']['id']), array('escape' => false)); ?>
-							<?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $user['User']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
+                            <?php if($logged_in and $current_user['id'] == $user['User']['id']  ){?>
+                            <?php echo $this->Html->link('<span class="glyphicon glyphicon-edit"></span>', array('action' => 'edit', $user['User']['id']), array('escape' => false)); ?>
+                            <?php echo $this->Form->postLink('<span class="glyphicon glyphicon-remove"></span>', array('action' => 'delete', $user['User']['id']), array('escape' => false), __('Are you sure you want to delete # %s?', $user['User']['id'])); ?>
+                            <?php } ?>
+
                         </td>
                     </tr>
 				<?php endforeach; ?>

@@ -6,13 +6,18 @@ class UsersController extends AppController {
 
     public $components = array('Paginator', 'Session');
 
-    public function beforeFilter() {
-        parent::beforeFilter();
-       // $this->Auth->allow('add', 'logout');
-     //    $this->set('logged_in',  $this->Auth->loggedIn());
-     //   $this->set('current_user',  $this->Auth->user());
+   public function beforeFilter() {
+    parent::beforeFilter();
+    $this->Auth->allow('add', 'logout');
+}
+public function isAuthorized($user) {
+    if(in_array($this->action,array('edit','delete'))){
+        if($user['id']!=$this->request->params['pass'][0]){
+            return FALSE;
+        }
     }
-
+    return TRUE;
+}
     public function index() {
         $this->User->recursive = 0;
         $this->set('users', $this->Paginator->paginate());
@@ -69,18 +74,20 @@ class UsersController extends AppController {
         return $this->redirect(array('action' => 'index'));
     }
 
-    public function login() {
-        if ($this->request->is('post')) {
-            if ($this->Auth->login()) {
-                return $this->redirect($this->Auth->redirect());
-            }
-            $this->Session->setFlash(_('Invalid username or password, try again'));
+   public function login() {
+    if ($this->request->is('post')) {
+        
+        if ($this->Auth->login($this->request->data('username'))) {
+          
+            return $this->redirect($this->Auth->redirect());
         }
+        $this->Session->setFlash(_('Invalid username or password, try again'));
     }
+}
 
-    public function logout() {
-        return $this->redirect($this->Auth->logout());
-    }
+public function logout() {
+    return $this->redirect($this->Auth->logout());
+}
     
 
 }

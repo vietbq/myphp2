@@ -1,7 +1,7 @@
 <?php
 
 App::uses('AppModel', 'Model');
-
+App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 /**
  * User Model
  *
@@ -13,75 +13,65 @@ class User extends AppModel {
      *
      * @var string
      */
-    public $displayField = 'id';
+    
 
     /**
      * Validation rules
      *
      * @var array
      */
-    public function beforeSave($options = array()) {
-        parent::beforeSave($options);
-        if(isset($this->data[$this->alias]['password'])){
-            $passwordHasher = new SimplePasswordHasher();
-            $this->data[$this->alias]['password'] = $passwordHasher->hash(
-            $this->data[$this->alias]['password']);
-        }
-        return TRUE;
+   
+        public function beforeSave($options = array()) {
+    if (isset($this->data[$this->alias]['password'])) {
+        $passwordHasher = new SimplePasswordHasher();
+        $this->data[$this->alias]['password'] = $passwordHasher->hash(
+            $this->data[$this->alias]['password']
+        );
     }
+    return true;
+}
+public $displayField = 'id';
     public $validate = array(
-        'password' => array(
-            'notEmpty' => array(
-                'rule' => array('notEmpty'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-            'Match passwords' => array(
-                'rule' => 'matchPasswords',
-                'message' => 'Your passwords do not match'
-            )
-        ),
+        
         'username' => array(
-            'notEmpty' => array(
+            'required' => array(
                 'rule' => array('notEmpty'),
-                'message' => 'Enter your username here'
+                'message' => 'A username is required'
             ),
-            'unique' => array(
-                'rule' => array('isUnique'),
-                'message' => 'This username is existing'
+            'That username has already been taken' => array(
+                'rule' => 'isUnique',
+                'message' => 'That username has already been taken.'
             )
         ),
-        'email' => array(
-            'email' => array(
-                'rule' => array('email'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
-            'notEmpty' => array(
+        'password' => array(
+            'required' => array(
                 'rule' => array('notEmpty'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
+                'message' => 'A password is required'
             ),
+            'Match passwords'=>array(
+                'rule'=>'matchPasswords',
+                'message'=>'Your passwords do not match'
+            )
+        ),
+        'password_confirm'=>array(
+            'Not empty'=>array(
+                'rule' => 'notEmpty',
+                'message'=>'Please confirm your password confirm'
+            )
         ),
         'role' => array(
-            'notEmpty' => array(
-                'rule' => array('notEmpty'),
-            //'message' => 'Your custom message here',
-            //'allowEmpty' => false,
-            //'required' => false,
-            //'last' => false, // Stop validation after this rule
-            //'on' => 'create', // Limit validation to 'create' or 'update' operations
-            ),
+            'valid' => array(
+                'rule' => array('inList', array('admin', 'author')),
+                'message' => 'Please enter a valid role',
+                'allowEmpty' => false
+            )
         ),
+        'email' =>array(
+            'Valid email'=>array(
+                'rule' =>   'email',
+                'message'=>'Please enter a valid email address'
+            )
+        )
     );
     public function matchPasswords($data){
         if($data['password']==$this->data['User']['password_comfirm']){

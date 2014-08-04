@@ -806,7 +806,7 @@ class AuthComponent extends Component {
  * @deprecated Since 2.4. Use Security::hash() directly or a password hasher object.
  */
 	public static function password($password) {
-		return Security::hash($password, null, true);
+		return Security::hash($password,null, true);
 	}
 
 /**

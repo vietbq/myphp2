@@ -19,8 +19,9 @@
                     <div class="panel-body">
                         <ul class="nav nav-pills nav-stacked">
 
+                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Posts'), array('controller'=>'posts','action' => 'index'), array('escape' => false)); ?></li>
                             <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Users'), array('action' => 'index'), array('escape' => false)); ?></li>
-                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;Add User'), array('action' => 'add'), array('escape' => false)); ?></li>
+                            <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Sign Up'), array('action' => 'add'), array('escape' => false)); ?></li>
                         </ul>
                     </div>
                 </div>
@@ -30,10 +31,10 @@
 			<?php echo $this->Form->create('User', array('role' => 'form')); ?>
 
             <div class="form-group">
-					<?php echo $this->Form->input('username', array('class' => 'form-control', 'placeholder' => 'Username'));?>
+					<?php echo $this->Form->input('username', array('class' => 'form-control'));?>
             </div>
             <div class="form-group">
-					<?php echo $this->Form->input('password', array('class' => 'form-control', 'placeholder' => 'Password'));?>
+					<?php echo $this->Form->input('password', array('class' => 'form-control'));?>
 
                 <div class="form-group">
 					<?php echo $this->Form->submit(__('Login'), array('class' => 'btn btn-default')); ?>

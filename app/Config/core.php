@@ -222,7 +222,7 @@
 /**
  * A random string used in security hashing methods.
  */
-	Configure::write('Security.salt', 'buiquocviet');
+	Configure::write('Security.salt', 'kAHSlkdjskldjlasdjlkajdaklsdj');
 
 /**
  * A random numeric string (digits only) used to encrypt/decrypt strings.
