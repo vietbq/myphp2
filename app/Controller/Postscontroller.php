@@ -23,6 +23,8 @@ class PostsController extends AppController {
  */
 	public function index() {
 		$this->Post->recursive = 0;
+                $this->paginate = array(
+            'limit' => 5);
 		$this->set('posts', $this->Paginator->paginate());
                 CakeLog::error(var_export($this->Post->find('all'), true));
 	}

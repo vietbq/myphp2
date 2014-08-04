@@ -20,9 +20,10 @@
                         <ul class="nav nav-pills nav-stacked">
                             <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-list"></span>&nbsp;&nbsp;List Users'), array('controller'=>'users','action' => 'index'), array('escape' => false)); ?></li>
                             <?php if(!$logged_in){ ?>
-                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New User'), array('action' => 'add'), array('escape' => false)); ?></li>
-                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;Login'), array('action' => 'login'), array('escape' => false)); ?></li>
+                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;Sign Up'), array('controller'=>'users','action' => 'add'), array('escape' => false)); ?></li>
+                                <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-asterisk"></span>&nbsp;&nbsp;Login'), array('controller'=>'users','action' => 'login'), array('escape' => false)); ?></li>
                             <?php } else { ?>
+                                 <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-plus"></span>&nbsp;&nbsp;New Post'), array('action' => 'add'), array('escape' => false)); ?></li>
                                 <li><?php echo $this->Html->link(__('<span class="glyphicon glyphicon-user"></span>&nbsp;&nbsp;User\'s Profile'), array('controller'=>'users','action' => 'view',$current_user['id']), array('escape' => false)); ?></li> 
                             <?php } ?>
                         </ul>
