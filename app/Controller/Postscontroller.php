@@ -3,7 +3,7 @@ App::uses('AppController', 'Controller');
 /**
  * Posts Controller
  *
- * @property Post $Post
+ *
  * @property PaginatorComponent $Paginator
  * @property SessionComponent $Session
  */
@@ -27,6 +27,7 @@ class PostsController extends AppController {
             'limit' => 5);
 		$this->set('posts', $this->Paginator->paginate());
                 CakeLog::error(var_export($this->Post->find('all'), true));
+               
 	}
 
 /**
