@@ -1,0 +1,114 @@
+Form thu hoạch
+--------
+
+Trả lời các câu hỏi sau, tạo 1 file answer.txt trong thư mục docs và commit lên Git.
+1, Trong Class sau
+
+class PostsController extends AppController {}
+
+có đoạn 
+public function add() {
+        if ($this->request->is('post')) {
+            $this->Post->create();
+            if ($this->Post->save($this->request->data)) {
+                $this->Session->setFlash(__('Your post has been saved.'));
+                return $this->redirect(array('action' => 'index'));
+            }
+            $this->Session->setFlash(__('Unable to add your post.'));
+        }
+    }
+
+a, Vậy, $this->Post là gì? Được khai báo ở đâu?
+=>$this->Post là một đối tượng một bản ghi trong table posts trong cơ sở dữ liệu, đối tượng này tương ứng vs tên của controller
+b, Muốn dùng 1 đối tượng tương tự $this->Post trong Controller để tương tác với Database, cần khai báo như thế nào?
+-> khai báo tên controller cùng tên với tên của bảng dữ liệu
+c, Giải thích lý do $this->Post trong trường hợp này: tuy không cần khai báo nhưng vẫn sử dụng được.
+->gầm định vs tên controller
+2, Trong bài tập về CakePHP, có bao nhiêu METHOD đã được đề cập tới?
+Kể tên.
+->có 1 method là post
+
+
+3, Function delete chỉ nên hoạt động với METHOD nào?
+-> nên hoạt động ở method post
+4, Trong đoạn 
+
+$this->Session->setFlash(
+            __('The post with id: %s has been deleted.', h($id))
+        );
+
+Dấu "__" ở đầu câu nghĩa là gì?
+->là một function dùng để translate a string 
+
+5, Các thao tác validate với dữ liệu nên được cài đặt ở đâu trong mô hình MVC?
+-> được đặt trong Model 
+6, Để hiện thông báo từ Controller ra View, ta có thể dùng phương pháp nào?
+-> ta dùng phương pháp là  $this->Session->setFlash(__());
+7, Điền vào dấu ... sau: 
+Helper đối với View, cũng như Component đối với Controller, validate đối với Model
+
+8, Đưa nội dung kết quả var_dump() ở 6a, vào form thu hoạch.
+array (size=6)
+  0 => 
+    array (size=1)
+      'Post' => 
+        array (size=6)
+          'id' => string '6' (length=1)
+          'id_user' => null
+          'title' => string 'cakephp' (length=7)
+          'body' => string 'la mot framework' (length=16)
+          'created' => string '2014-08-03 16:53:09' (length=19)
+          'modified' => string '2014-08-03 16:53:09' (length=19)
+  1 => 
+    array (size=1)
+      'Post' => 
+        array (size=6)
+          'id' => string '7' (length=1)
+          'id_user' => null
+          'title' => string 'facebook' (length=8)
+          'body' => string 'dojsajsakjsa
+' (length=14)
+          'created' => string '2014-08-04 10:40:29' (length=19)
+          'modified' => string '2014-08-04 10:40:29' (length=19)
+  2 => 
+    array (size=1)
+      'Post' => 
+        array (size=6)
+          'id' => string '8' (length=1)
+          'id_user' => null
+          'title' => string 'asdasd' (length=6)
+          'body' => string 'asdadada' (length=8)
+          'created' => string '2014-08-04 10:50:57' (length=19)
+          'modified' => string '2014-08-04 10:50:57' (length=19)
+  3 => 
+    array (size=1)
+      'Post' => 
+        array (size=6)
+          'id' => string '9' (length=1)
+          'id_user' => null
+          'title' => string 'facebook' (length=8)
+          'body' => string 'la mang xa hoi' (length=14)
+          'created' => string '2014-08-04 11:15:54' (length=19)
+          'modified' => string '2014-08-04 11:15:54' (length=19)
+  4 => 
+    array (size=1)
+      'Post' => 
+        array (size=6)
+          'id' => string '10' (length=2)
+          'id_user' => null
+          'title' => string 'asdasd' (length=6)
+          'body' => string 'wddadasdasd' (length=11)
+          'created' => string '2014-08-04 11:27:20' (length=19)
+          'modified' => string '2014-08-04 11:27:20' (length=19)
+  5 => 
+    array (size=1)
+      'Post' => 
+        array (size=6)
+          'id' => string '11' (length=2)
+          'id_user' => null
+          'title' => string 'assfasdf' (length=8)
+          'body' => string 'asdfsdfsdf' (length=10)
+          'created' => string '2014-08-04 11:27:39' (length=19)
+          'modified' => string '2014-08-04 11:27:39' (length=19)
+boolean true
+9, Nộp lại link project Github
